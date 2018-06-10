@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pharmacy.manager.placowki.FXMLPlacowkiController">
+    <stylesheets>
+        <URL value="@fxmlplacowki.css" />
+    </stylesheets>
+   <children>
+      <TableView fx:id="Tabela_Placowki" layoutX="16.0" layoutY="66.0" prefHeight="473.0" prefWidth="1253.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+        <columns>
+          <TableColumn fx:id="Kolumna_Lp" prefWidth="75.0" text="Lp." />
+          <TableColumn fx:id="Kolumna_kod_pocztowy" prefWidth="183.0" text="Kod pocztowy" />
+            <TableColumn fx:id="Kolumna_Miejscowosc" prefWidth="404.0" text="Miejscowość" />
+            <TableColumn fx:id="Kolumna_Adres" prefWidth="336.0" text="Adres" />
+            <TableColumn fx:id="Kolumna_Telefon" prefWidth="260.0" text="Telefon" />
+        </columns>
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                <MenuItem fx:id="Menu_Szczegoly" mnemonicParsing="false" onAction="#goSzczegoly" text="Szczegóły" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <JFXTextField fx:id="TextField_Placowki" focusColor="#ffff8d" labelFloat="true" layoutX="16.0" layoutY="582.0" prefHeight="31.0" prefWidth="407.0" promptText="Szukaj palcówk po adresie" unFocusColor="#ffff8d" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="600.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton fx:id="Button_Wyjscie" layoutX="1136.0" layoutY="656.0" onAction="#wyjscie" prefHeight="50.0" prefWidth="150.0" text="Wstecz" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="650.0">
+         <graphic>
+            <FontAwesomeIconView glyphName="ARROW_LEFT" size="35" />
+         </graphic>
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="50.0" prefWidth="1253.0" text="Placówki Firmy" textFill="#ffff8d">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

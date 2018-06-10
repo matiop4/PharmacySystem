@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pharmacy.manager.placowki.FXMLSzczegolyController">
+    <stylesheets>
+        <URL value="@fxmlplacowki.css" />
+    </stylesheets>
+   <children>
+      <VBox layoutX="18.0" layoutY="117.0" prefHeight="593.0" prefWidth="150.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="1114.0" AnchorPane.topAnchor="75.0">
+         <children>
+            <JFXButton fx:id="Button_Pracownicy" onAction="#goPracownicy" prefHeight="100.0" prefWidth="150.0" text="Pracownicy">
+               <graphic>
+                  <FontAwesomeIconView glyphName="MALE" size="50" wrappingWidth="35.0" />
+               </graphic></JFXButton>
+            <JFXButton fx:id="Button_Produkty" onAction="#goProdukty" prefHeight="100.0" prefWidth="150.0" text="Produkty">
+               <graphic>
+                  <FontAwesomeIconView glyphName="CUBE" size="50" wrappingWidth="50.0" />
+               </graphic></JFXButton>
+            <JFXButton fx:id="Button_Sprzedaz" onAction="#goSprzedaz" prefHeight="100.0" prefWidth="150.0" text="Sprzedaż">
+               <graphic>
+                  <FontAwesomeIconView glyphName="CALCULATOR" size="50" wrappingWidth="50.0" />
+               </graphic></JFXButton>
+            <JFXButton fx:id="Button_Wstecz" onAction="#wstecz" prefHeight="100.0" prefWidth="150.0" text="Wstecz">
+               <graphic>
+                  <FontAwesomeIconView glyphName="ARROW_LEFT" size="50" wrappingWidth="50.0" />
+               </graphic></JFXButton>
+         </children>
+      </VBox>
+      <Pane fx:id="Pane_Glowna" disable="true" layoutX="4.0" layoutY="4.0" prefHeight="81.0" prefWidth="1276.0" AnchorPane.bottomAnchor="645.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="75.0" prefWidth="1280.0">
+               <children>
+                  <Label fx:id="info_placowka" alignment="CENTER" ellipsisString="" prefHeight="75.0" prefWidth="1280.0" text="Label" textFill="#ffff8f">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children></Pane>
+      <Pane fx:id="Pane_Pracownicy" layoutX="194.0" layoutY="40.0" prefHeight="200.0" prefWidth="1055.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="75.0">
+         <children>
+            <TableView fx:id="Tabela_pracownicy" prefHeight="500.0" prefWidth="1070.0">
+              <columns>
+                <TableColumn fx:id="koluma_lp" prefWidth="75.0" text="Lp." />
+                <TableColumn fx:id="kolumna_stanowisko" prefWidth="214.0" text="Stanowisko praconika" />
+                  <TableColumn fx:id="kolumna_imie" prefWidth="280.0" text="Imię pracownika" />
+                  <TableColumn fx:id="kolumna_nazwisko" prefWidth="330.0" text="Nazwisko pracownika" />
+                  <TableColumn fx:id="kolumna_telefon" prefWidth="168.0" text="Telefon pracownika" />
+              </columns>
+            </TableView>
+            <JFXTextField fx:id="szukajpracownikow" focusColor="#ffff8d" labelFloat="true" layoutX="15.0" layoutY="560.0" prefHeight="45.0" prefWidth="462.0" promptText="Szukaj pracowników po stanowisku, nazwisku" unFocusColor="#ffff8d">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </Pane>
+      <Pane fx:id="Pane_Produkty" layoutX="166.0" layoutY="77.0" prefHeight="200.0" prefWidth="1055.0" visible="false" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="77.0">
+         <children>
+            <TableView fx:id="Tabela_Produkty" prefHeight="500.0" prefWidth="1070.0">
+              <columns>
+                <TableColumn fx:id="Tab_Lp" prefWidth="66.0" text="Lp." />
+                <TableColumn fx:id="Tab_NazwaProdukty" prefWidth="269.0" text="Nazwa produktu" />
+                  <TableColumn fx:id="Tab_OpisProduktu" prefWidth="378.0" text="Opis produktu" />
+                  <TableColumn fx:id="Tab_CenaProduktu" prefWidth="237.0" text="Cena produktu" />
+                  <TableColumn fx:id="Tab_Dostepnosc" prefWidth="118.0" text="Dostępność" />
+              </columns>
+            </TableView>
+            <JFXTextField fx:id="szukajproduktu" focusColor="#ffff8d" labelFloat="true" layoutX="14.0" layoutY="547.0" prefHeight="45.0" prefWidth="462.0" promptText="Szukaj produktu po nazwie lub opisie" unFocusColor="#ffff8d">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </Pane>
+      <Pane fx:id="Pane_Sprzedaz" layoutX="168.0" layoutY="103.0" prefHeight="607.0" prefWidth="1102.0" visible="false" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="101.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="64.0" prefWidth="1102.0" text="Statystki sprzedaży produktów" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <HBox layoutX="14.0" layoutY="64.0" prefHeight="55.0" prefWidth="1077.0">
+               <children>
+                  <Label text="Na przestrzeni od" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="75.0" right="25.0" top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <JFXDatePicker fx:id="Data_Od" defaultColor="#ffff8d">
+                     <HBox.margin>
+                        <Insets left="25.0" right="25.0" top="10.0" />
+                     </HBox.margin>
+                  </JFXDatePicker>
+                  <Label text="do:" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="25.0" right="25.0" top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <JFXDatePicker fx:id="Data_Do" defaultColor="#ffff8d">
+                     <HBox.margin>
+                        <Insets left="25.0" right="25.0" top="10.0" />
+                     </HBox.margin>
+                  </JFXDatePicker>
+                  <JFXButton fx:id="Button_Szukaj" onAction="#goStatystkiProduktu" prefHeight="31.0" prefWidth="162.0" text="Znajdź">
+                     <HBox.margin>
+                        <Insets left="25.0" right="25.0" top="10.0" />
+                     </HBox.margin>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <BarChart fx:id="Statssprzedazy" layoutX="37.0" layoutY="135.0" prefHeight="412.0" prefWidth="1041.0" title="Dzieny dochód">
+                <xAxis>
+                  <CategoryAxis side="BOTTOM" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis side="LEFT" />
+               </yAxis>
+            </BarChart>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane fx:id="spMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pharmacy.pracownik.FXMLPracownikController">
+   <children>
+      <AnchorPane fx:id="apMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1280.0" style="-fx-background-color: #fff;">
+         <children>
+            <AnchorPane id="AnchorPane" layoutX="359.0" layoutY="-1.0" prefHeight="650.0" prefWidth="922.0" AnchorPane.topAnchor="-1.0">
+               <children>
+                  <Pane fx:id="pnl_Zakupy" prefHeight="650.0" prefWidth="921.0" style="-fx-background-color: #ffff;">
+                     <children>
+                        <JFXButton fx:id="bZakupy" graphicTextGap="20.0" layoutX="203.0" layoutY="325.0" onAction="#zrobZakupy" prefHeight="241.0" prefWidth="472.0" styleClass="menu-button" text="ZAKUPY">
+                           <graphic>
+                              <FontAwesomeIconView fill="#172b43" glyphName="CREDIT_CARD" size="50" />
+                           </graphic>
+                           <font>
+                              <Font name="Calibri Bold" size="95.0" />
+                           </font>
+                        </JFXButton>
+                        <ImageView fitHeight="331.0" fitWidth="321.0" layoutX="299.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@pharmacy.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="211.0" fitWidth="224.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@kasa.jpg" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="355.0" layoutY="515.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KLIKNIJ I OBSŁÓŻ KLIENTA">
+                           <font>
+                              <Font name="Calibri" size="26.0" />
+                           </font>
+                        </Text>
+                     </children></Pane>
+                  <Pane fx:id="pnl_Klienci" prefHeight="650.0" prefWidth="921.0" style="-fx-background-color: #ffff;">
+                     <children>
+                        <JFXButton fx:id="bKlienci" alignment="CENTER_RIGHT" contentDisplay="CENTER" onAction="#otworzKlienci" prefHeight="650.0" prefWidth="921.0" styleClass="menu-button" text="KLIENCI  ">
+                           <font>
+                              <Font name="Calibri Bold" size="96.0" />
+                           </font>
+                        </JFXButton>
+                        <ImageView fitHeight="306.0" fitWidth="577.0" layoutX="7.0" layoutY="7.0" opacity="0.54" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@klienci.jpg" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="584.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KLIKNIJ I SPRAWDŹ LISTĘ">
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                        </Text>
+                     </children></Pane>
+                  <Pane fx:id="pnl_Leki" prefHeight="650.0" prefWidth="921.0" style="-fx-background-color: #ffff;">
+                     <children>
+                        <ImageView fitHeight="601.0" fitWidth="840.0" layoutX="41.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@tabletki.png" />
+                           </image>
+                        </ImageView>
+                        <JFXButton fx:id="bProdukty" alignment="TOP_RIGHT" graphicTextGap="30.0" layoutX="96.0" layoutY="347.0" lineSpacing="10.0" onAction="#otworzProdukty" prefHeight="277.0" prefWidth="730.0" styleClass="menu-button" text="LEKARSTWA">
+                           <graphic>
+                              <FontAwesomeIconView fill="#366db2" glyphName="AMBULANCE" size="60" />
+                           </graphic>
+                           <font>
+                              <Font name="Calibri Bold" size="83.0" />
+                           </font>
+                        </JFXButton>
+                        <Text layoutX="408.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KLIKNIJ I SPRAWDŹ LISTĘ DOSTEPNYCH LEKÓW">
+                           <font>
+                              <Font name="Calibri" size="22.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="pnl_clear" prefHeight="650.0" prefWidth="921.0" style="-fx-background-color: #98b4b7;">
+                     <children>
+                        <ImageView fx:id="Img1" fitHeight="650.0" fitWidth="921.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@1.jpg" />
+                           </image>
+                        </ImageView>
+                        <Text fill="#5e5757" layoutX="193.0" layoutY="517.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WITAJ SPRZEDAWCO" wrappingWidth="535.17578125">
+                           <font>
+                              <Font name="Calibri Bold" size="59.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="Text1" fill="#5e5757" layoutX="412.0" layoutY="613.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="194.17578125">
+                           <font>
+                              <Font name="Calibri Bold" size="34.0" />
+                           </font>
+                        </Text>
+                        <JFXButton fx:id="btn123" alignment="BASELINE_LEFT" layoutX="507.0" layoutY="544.0" prefHeight="106.0" prefWidth="414.0" text="Button" textFill="#0e86d7">
+                           <font>
+                              <Font name="Calibri Bold" size="44.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutY="-1.0" prefHeight="650.0" prefWidth="359.0" style="-fx-background-color: #F0F7FF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="921.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <AnchorPane prefHeight="650.0" prefWidth="72.0" style="-fx-background-color: #FFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </AnchorPane>
+                  <JFXButton fx:id="btnPanel" graphicTextGap="55.0" layoutX="72.0" lineSpacing="10.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#HandleButton" prefHeight="68.0" prefWidth="290.0" text="PANEL SPRZEDAWCY" textFill="#4bcde1">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <font>
+                        <Font name="Arial Black" size="18.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnKlienci" graphicTextGap="55.0" layoutY="144.0" lineSpacing="10.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#HandleButton" prefHeight="68.0" prefWidth="359.0" text="KLIENCI">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnZakupy" graphicTextGap="55.0" layoutY="212.0" lineSpacing="10.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#HandleButton" prefHeight="68.0" prefWidth="359.0" text="ZAKUPY">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="bWyjscie" graphicTextGap="55.0" layoutY="568.0" lineSpacing="10.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#Wyjscie" prefHeight="68.0" prefWidth="359.0" text="WYJDŹ">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <FontAwesomeIconView fill="#3495c6" glyphName="CART_PLUS" layoutX="21.0" layoutY="256.0" size="30" strokeType="OUTSIDE" wrappingWidth="31.0" />
+                  <FontAwesomeIconView fill="#3495c6" glyphName="ID_CARD" layoutX="21.0" layoutY="186.0" size="30" strokeType="OUTSIDE" wrappingWidth="31.0" />
+                  <FontAwesomeIconView fill="#3495c6" glyphName="TIMES_CIRCLE" layoutX="25.0" layoutY="612.0" size="30" strokeType="OUTSIDE" wrappingWidth="22.0" />
+                  <JFXButton fx:id="btnLeki" graphicTextGap="55.0" layoutY="280.0" lineSpacing="10.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#HandleButton" prefHeight="68.0" prefWidth="359.0" text="LEKI">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <FontAwesomeIconView fill="#3495c6" glyphName="HOSPITAL_ALT" layoutX="25.0" layoutY="324.0" size="30" strokeType="OUTSIDE" wrappingWidth="22.000024259090424" />
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

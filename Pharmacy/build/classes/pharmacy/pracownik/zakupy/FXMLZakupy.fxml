@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane fx:id="spMain" onMouseEntered="#uzupelnijKlienta" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pharmacy.pracownik.zakupy.FXMLZakupyController">
+   <children>
+      <AnchorPane id="AnchorPane" fx:id="apMain" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #ffff;">
+         <children>
+            <TableView fx:id="tableRachunek" layoutX="50.0" layoutY="358.0" prefHeight="323.0" prefWidth="1180.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="358.0">
+              <columns>
+                <TableColumn fx:id="columnIdProduktu" prefWidth="106.0" text="ID Produktu" />
+                <TableColumn fx:id="columnNazwa" prefWidth="292.0" text="Nazwa" />
+                  <TableColumn fx:id="columnOpis" prefWidth="456.0" text="Opis" />
+                  <TableColumn fx:id="columnCenaSzt" prefWidth="121.0" text="Cena (szt.)" />
+                  <TableColumn fx:id="columnIlosc" prefWidth="92.0" text="Ilość" />
+                  <TableColumn fx:id="columnCena" prefWidth="105.0" text="Cena" />
+              </columns>
+            </TableView>
+            <JFXButton fx:id="bDoRachunku" focusTraversable="false" layoutX="50.0" layoutY="59.0" onAction="#dodajDoRachunku" prefHeight="62.0" prefWidth="276.0" style="-fx-border-color: #000000;" styleClass="menu-button" text="  DODAJ LEK" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="954.0" AnchorPane.topAnchor="59.0">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="CART_PLUS" size="35" styleClass="glyph-add" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="bWyjscie" contentDisplay="TOP" focusTraversable="false" layoutX="1162.0" layoutY="20.0" onAction="#zamknijOkno" prefHeight="62.0" prefWidth="104.0" style="-fx-border-color: #000000;" styleClass="menu-button" text="WRÓĆ" AnchorPane.rightAnchor="14.0">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="CLOSE" size="35" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="bUsunPrzedmiot" focusTraversable="false" graphicTextGap="15.0" layoutX="50.0" layoutY="142.0" onAction="#usunZRachunku" prefHeight="62.0" prefWidth="276.0" style="-fx-border-color: #000000;" styleClass="menu-button" text="USUŃ LEK">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="CART_ARROW_DOWN" size="35" styleClass="glyph-remove" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="bZatwierdz" focusTraversable="false" graphicTextGap="15.0" layoutX="50.0" layoutY="224.0" onAction="#finalizujTransakcje" prefHeight="62.0" prefWidth="276.0" style="-fx-border-color: #000000;" styleClass="menu-button" text="POTWIERDŹ">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="CHECK" size="35" styleClass="glyph-add" />
+               </graphic>
+            </JFXButton>
+            <Label fx:id="lSuma" alignment="CENTER" layoutX="445.0" layoutY="267.0" prefHeight="62.0" prefWidth="217.0" text="CENA ZAKUPÓW:">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="lSumaWartosc" alignment="CENTER" layoutX="662.0" layoutY="267.0" prefHeight="62.0" prefWidth="157.0" text="0.0 zł">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <JFXCheckBox fx:id="cRencista" checkedColor="#53abbf" layoutX="409.0" layoutY="90.0" onAction="#zaznaczonyRenta" prefHeight="45.0" prefWidth="288.0" text="RENCISTA (-30%)" textFill="#941919" unCheckedColor="#5e5d5d">
+               <font>
+                  <Font name="Century Gothic Bold" size="30.0" />
+               </font>
+            </JFXCheckBox>
+            <Label fx:id="lStalyKlient" alignment="CENTER" layoutX="409.0" layoutY="121.0" prefHeight="62.0" prefWidth="410.0">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <JFXCheckBox fx:id="cSrody" checkedColor="#53abbf" layoutX="409.0" layoutY="130.0" onAction="#zaznaczony" onMouseClicked="#zaznaczonyPrzedmiot" prefHeight="45.0" prefWidth="371.0" text="TANIE ŚRODY (-10%)" textFill="#941919" unCheckedColor="#757575">
+               <font>
+                  <Font name="Century Gothic Bold" size="30.0" />
+               </font>
+            </JFXCheckBox>
+            <JFXCheckBox fx:id="cPoniedzialki" checkedColor="#53abbf" layoutX="409.0" layoutY="173.0" onAction="#zaznaczonyPrzedmiot" prefHeight="45.0" prefWidth="566.0" text="TANIE PONIEDZIAŁKI (-15%)" textFill="#941919" unCheckedColor="#616161">
+               <font>
+                  <Font name="Century Gothic Bold" size="30.0" />
+               </font>
+            </JFXCheckBox>
+            <ImageView fitHeight="271.0" fitWidth="318.0" layoutX="884.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@kasa-fiskalna.jpg" />
+               </image>
+            </ImageView>
+            <Text layoutX="434.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ULGI">
+               <font>
+                  <Font name="Century Gothic" size="50.0" />
+               </font>
+            </Text>
+            <JFXButton fx:id="bPdf" focusTraversable="false" graphicTextGap="15.0" layoutX="50.0" layoutY="224.0" onAction="#DoPDF" prefHeight="62.0" prefWidth="276.0" style="-fx-border-color: #941919;" styleClass="menu-button" text="RACHUNEK" textFill="#941919">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="MONEY" size="35" styleClass="glyph-add" />
+               </graphic>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane fx:id="spMain" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pharmacy.pracownik.zakupy.FXMLListaLekowController">
+   <children>
+      <AnchorPane id="AnchorPane" fx:id="apMain" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #ffff;" styleClass="mainFxmlClass">
+         <children>
+            <JFXButton fx:id="bWyjscie" focusTraversable="false" graphicTextGap="15.0" layoutX="29.0" layoutY="629.0" onAction="#zamknijOkno" prefHeight="77.0" prefWidth="170.0" styleClass="cancel-button" text="WRÓĆ" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="1081.0">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="ARROW_LEFT" size="35" styleClass="glyph-remove" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="bDodaj" focusTraversable="false" layoutX="53.0" layoutY="31.0" onAction="#dodajDoRachunku" prefHeight="147.0" prefWidth="341.0" style="-fx-border-color: #000000;" styleClass="add-button" text="  Dodaj" AnchorPane.rightAnchor="886.0">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="CART_PLUS" size="35" styleClass="glyph-add" />
+               </graphic>
+            </JFXButton>
+            <TableView fx:id="tablePrzedmioty" layoutX="468.0" layoutY="14.0" onMouseClicked="#zaznaczProdukt" prefHeight="693.0" prefWidth="798.0" AnchorPane.leftAnchor="468.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+              <columns>
+                <TableColumn fx:id="columnIdPrzedmiotu" prefWidth="102.0" text="ID Produktu" />
+                <TableColumn fx:id="columnNazwa" prefWidth="225.0" text="Nazwa" />
+                  <TableColumn fx:id="columnOpis" prefWidth="209.0" text="Opis" />
+                  <TableColumn fx:id="columnNaStanie" prefWidth="142.0" text="Ilość" />
+                  <TableColumn fx:id="columnCena" prefWidth="118.0" text="Cena" />
+              </columns>
+            </TableView>
+            <JFXTextField fx:id="tfWyszukaj" focusColor="#2575d6" focusTraversable="false" labelFloat="true" layoutX="53.0" layoutY="494.0" prefHeight="47.0" prefWidth="341.0" promptText="Nazwa leku" unFocusColor="#2575d6">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="tfIlosc" alignment="CENTER" focusColor="BLACK" focusTraversable="false" labelFloat="true" layoutX="53.0" layoutY="215.0" prefHeight="47.0" prefWidth="341.0" promptText="Ilość leków do dodania" unFocusColor="BLACK">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXTextField>
+            <Text fill="#2575d6" layoutX="53.0" layoutY="463.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SZUKAJ LEKU">
+               <font>
+                  <Font name="Calibri Bold" size="41.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="147.0" fitWidth="311.0" layoutX="68.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@tabletki.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

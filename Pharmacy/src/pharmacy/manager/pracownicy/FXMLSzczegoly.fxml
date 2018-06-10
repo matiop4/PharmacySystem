@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mkl_shop.manager.pracownicy.FXMLSzczegolyController">
+    <stylesheets>
+        <URL value="@fxmlpracownicy.css" />
+   </stylesheets>
+   <children>
+      <HBox prefHeight="50.0" prefWidth="1280.0" AnchorPane.topAnchor="25.0">
+         <children>
+            <JFXTextField fx:id="tf_imie" disable="true" focusColor="#ffff8d" labelFloat="true" prefHeight="50.0" prefWidth="300.0" unFocusColor="#ffff8d">
+               <HBox.margin>
+                  <Insets left="170.0" right="15.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="tf_nazwisko" disable="true" focusColor="#ffff8d" labelFloat="true" prefHeight="50.0" prefWidth="300.0" unFocusColor="#ffff8d">
+               <HBox.margin>
+                  <Insets left="15.0" right="15.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="tf_placowka" disable="true" focusColor="#ffff8d" labelFloat="true" prefHeight="50.0" prefWidth="300.0" unFocusColor="#ffff8d">
+               <HBox.margin>
+                  <Insets left="15.0" right="15.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </HBox>
+      <HBox prefHeight="50.0" prefWidth="1280.0" AnchorPane.topAnchor="150.0">
+         <children>
+            <Label prefHeight="50.0" prefWidth="300.0" text="Wynik sprzedaży na przestrzeni od:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="170.0" right="15.0" />
+               </HBox.margin>
+            </Label>
+            <JFXDatePicker fx:id="dataod" defaultColor="#ffff8d" prefHeight="50.0" prefWidth="201.0">
+               <HBox.margin>
+                  <Insets left="15.0" right="15.0" />
+               </HBox.margin>
+            </JFXDatePicker>
+            <Label prefHeight="50.0" text="do:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="15.0" right="15.0" />
+               </HBox.margin>
+            </Label>
+            <JFXDatePicker fx:id="datado" defaultColor="#ffff8d" prefHeight="50.0">
+               <HBox.margin>
+                  <Insets left="15.0" right="15.0" />
+               </HBox.margin>
+            </JFXDatePicker>
+            <JFXButton fx:id="Button_Znajdz" onAction="#Znajdz_sprzedaz" prefHeight="50.0" text="Znajdź">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+               <graphic>
+                  <FontAwesomeIconView glyphName="SEARCH" />
+               </graphic>
+            </JFXButton>
+         </children>
+      </HBox>
+      <BarChart id="tytul_wykresu" fx:id="wykresefektywnosci" layoutX="20.0" layoutY="251.0" maxWidth="1249.0" minWidth="1150.0" prefHeight="400.0" prefWidth="1249.0" stylesheets="@fxmlpracownicy.css" title="Efektywność" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="249.0">
+        <xAxis>
+          <CategoryAxis label="Dni" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis prefHeight="303.0" prefWidth="18.0" side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <JFXButton fx:id="Button_Wyjscie" layoutX="1139.0" layoutY="656.0" onAction="#Wyjscie" prefHeight="50.0" prefWidth="130.0" text="     Wyjscie" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <FontAwesomeIconView glyphName="CLOSE" layoutX="1149.0" layoutY="694.0" size="35" text="" wrappingWidth="13.785714149475098" />
+   </children>
+</AnchorPane>
