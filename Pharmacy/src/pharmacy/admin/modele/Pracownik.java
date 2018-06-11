@@ -37,6 +37,19 @@ public class Pracownik {
         this.rola = new SimpleStringProperty(rola);
        
     }
+    
+    
+    public Pracownik(int id_pracownika, String imie_pracownika, String nazwisko_pracownika, String telefon_pracownika, String login, String rola) {
+        this.id_pracownika = new SimpleIntegerProperty(id_pracownika);
+        this.imie_pracownika = new SimpleStringProperty(imie_pracownika);
+        this.nazwisko_pracownika = new SimpleStringProperty(nazwisko_pracownika);
+        this.telefon_pracownika = new SimpleStringProperty(telefon_pracownika);
+        this.login = new SimpleStringProperty(login);
+        this.rola = new SimpleStringProperty(rola);
+       
+    }
+    
+    
 
     //      ***Gettery***
     public int getId_pracownika() {

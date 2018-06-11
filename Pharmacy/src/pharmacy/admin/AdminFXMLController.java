@@ -48,7 +48,7 @@ import javafx.stage.StageStyle;
 import pharmacy.pharmacy;
 import pharmacy.admin.modele.Produkty;
 import pharmacy.admin.modele.Pracownik;
-import pharmacy.alert.AlertMaker;
+import pharmacy.alert.MakeAlert;
 import pharmacy.connection.DBConnection;
 import pharmacy.manager.klasy.Alert;
 import pharmacy.manager.klasy.Ladowanie_danych;
@@ -242,16 +242,18 @@ public class AdminFXMLController implements Initializable {
     @FXML
     private void DodajKonto(ActionEvent event) {
         if (txImie.getText().isEmpty() || txNazwisko.getText().isEmpty() || txNumerTel.getText().isEmpty() || txLogin.getText().isEmpty() || txHaslo.getText().isEmpty()) {
-            AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bOk), "Błąd z dodawaniem", "Uzupełnij wszystkie wymagane pola.");
+            MakeAlert.showMaterialDialog(spMain, apMain, Arrays.asList(bOk), "Błąd z dodawaniem", "Uzupełnij wszystkie wymagane pola.");
         } else if (Sprawdzanie.telefonPoprawny(txNumerTel.getText()) == false) {
-            AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bOk), "Błąd z dodawaniem", "Poprawny numer telefonu zawiera 9 cyfr.");
-        } else {
+            MakeAlert.showMaterialDialog(spMain, apMain, Arrays.asList(bOk), "Błąd z dodawaniem", "Podaj 9 cyfr telefonu komórkowego.");
+        } 
+
+        else {
             try {
                 Connection conn = DBConnection.Connect();
                 Statement ps = conn.createStatement();
                 //ResultSet rs = ps.executeQuery("SELECT id_placowki from placowka where adres_placowki = '" + cbPlacowka.getValue() + "'");
                 //rs.next();
-                conn.createStatement().executeUpdate("INSERT INTO pracownik(id_pracownika, imie_pracownika, nazwisko_pracownika, telefon_pracownika,login,haslo,rola,id_placowki,status_konta) Values (null,'" + txImie.getText() + "','" + txNazwisko.getText() + "','" + txNumerTel.getText() + "','" + txLogin.getText() + "','" + txHaslo.getText() + "','" + cbRola.getValue() + "','" + 1 + "','" + "aktywne')");
+                conn.createStatement().executeUpdate("INSERT INTO pracownik(id_pracownika, imie_pracownika, nazwisko_pracownika, telefon_pracownika,login,haslo,rola,id_placowki,status) Values (null,'" + txImie.getText() + "','" + txNazwisko.getText() + "','" + txNumerTel.getText() + "','" + txLogin.getText() + "','" + txHaslo.getText() + "','" + cbRola.getValue() + "','" + 1 + "','" + "aktywne')");
                 LoadDataPracownik();
                 conn.close();
             } catch (SQLException e) {
@@ -276,11 +278,11 @@ public class AdminFXMLController implements Initializable {
     private void AktualizujKonto(ActionEvent event) {
 
         if (tableKonta.getSelectionModel().getSelectedItem() == null) {
-            AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bOk), "Błąd z aktualizacją", "Wybierz konto do aktualizacji.");
+            MakeAlert.showMaterialDialog(spMain, apMain, Arrays.asList(bOk), "Błąd z aktualizacją", "Wybierz konto do aktualizacji.");
         } else if (txImie.getText().isEmpty() || txNazwisko.getText().isEmpty() || txNumerTel.getText().isEmpty() || txLogin.getText().isEmpty() || txHaslo.getText().isEmpty()) {
-            AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bOk), "Błąd z aktualizacją", "Uzupełnij wszystkie wymagane pola.");
+            MakeAlert.showMaterialDialog(spMain, apMain, Arrays.asList(bOk), "Błąd z aktualizacją", "Uzupełnij wszystkie wymagane pola.");
         } else if (Sprawdzanie.telefonPoprawny(txNumerTel.getText()) == false) {
-            AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bOk), "Błąd z aktualizacją", "Poprawny numer telefonu zawiera 9 cyfr.");
+            MakeAlert.showMaterialDialog(spMain, apMain, Arrays.asList(bOk), "Błąd z aktualizacją", "Poprawny numer telefonu zawiera 9 cyfr.");
         } else {
             try {
                 Connection conn = DBConnection.Connect();

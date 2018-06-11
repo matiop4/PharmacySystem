@@ -29,7 +29,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import pharmacy.alert.AlertMaker;
+import pharmacy.alert.MakeAlert;
 import pharmacy.connection.DBConnection;
 import pharmacy.manager.FXMLManagerController;
 import pharmacy.pracownik.FXMLPracownikController;
@@ -146,8 +146,9 @@ public class FXMLLogowanieController implements Initializable {
                     FXMLPracownikController.idPracownika = idPracownika;
                     break;
                 default :
+                    
                     JFXButton bCancel1 = new JFXButton("Ok");
-                    AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bCancel1), "Błąd", "Sprawdź poprawność wpisanego loginu i hasła!");
+                    MakeAlert.showSimpleAlert("Nie udało się zalogować","Wpisz inny login i hasło");
                     break;
             }
             

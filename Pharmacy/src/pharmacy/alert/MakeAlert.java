@@ -31,12 +31,12 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 
-public class AlertMaker {
+public class MakeAlert {
 
     public static void showSimpleAlert(String title, String content) {
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
+        Alert alert = new Alert(AlertType.WARNING);
+        alert.setTitle("Logowanie");
+        alert.setHeaderText(title);
         alert.setContentText(content);
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
         //LibraryAssistantUtil.setStageIcon(stage);
@@ -143,7 +143,7 @@ public class AlertMaker {
     public static void showTrayMessage(String title, String message) {
         try {
             SystemTray tray = SystemTray.getSystemTray();
-            //BufferedImage image = ImageIO.read(AlertMaker.class.getResource(LibraryAssistantUtil.ICON_IMAGE_LOC));
+            //BufferedImage image = ImageIO.read(MakeAlert.class.getResource(LibraryAssistantUtil.ICON_IMAGE_LOC));
             TrayIcon trayIcon = new TrayIcon(null, "Jakas nazwa");
             trayIcon.setImageAutoSize(true);
             trayIcon.setToolTip("jakas nazwa");

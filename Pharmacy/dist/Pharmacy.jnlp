@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Pharmacy.jar" size="1664921" download="eager" />
+    <jar href="Pharmacy.jar" size="1665611" download="eager" />
     <jar href="lib\fontawesomefx-commons-8.15.jar" size="20957" download="eager" />
     <jar href="lib\fontawesomefx-fontawesome-4.7.0-5.jar" size="136891" download="eager" />
     <jar href="lib\itextpdf-5.4.3.jar" size="2070978" download="eager" />

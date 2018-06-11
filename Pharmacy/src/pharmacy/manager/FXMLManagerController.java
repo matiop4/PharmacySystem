@@ -40,14 +40,16 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import pharmacy.admin.AdminFXMLController;
 import pharmacy.admin.modele.Produkty;
 import pharmacy.admin.modele.Pracownik;
-import pharmacy.alert.AlertMaker;
+import pharmacy.alert.MakeAlert;
 import pharmacy.connection.DBConnection;
 import pharmacy.manager.klasy.Ladowanie_danych;
 import pharmacy.pracownik.klient.FXMLKlientController;
 import pharmacy.pracownik.modele.Klient;
 import pharmacy.sprawdzanie.Sprawdzanie;
+
 
 /**
  * FXML Controller class
@@ -62,6 +64,20 @@ public class FXMLManagerController implements Initializable {
      * Initializes the controller class.
      */
     @FXML
+    private TableView<Pracownik> tableKonta;
+    @FXML
+    private TableColumn<Pracownik, String> colImie;
+    @FXML
+    private TableColumn<Pracownik, String> colNazwisko;
+    @FXML
+    private TableColumn<Pracownik, Integer> colRola;
+    @FXML
+    private TableColumn<Pracownik, Integer> colNrTel;
+    @FXML
+    private TableColumn<Pracownik, Integer> colPlacowka;
+    @FXML
+    private TableColumn<Pracownik, String> colLogin;
+    @FXML
     private JFXComboBox<String> cbRola;
     @FXML
     private TableView<Produkty> tableProdukty;
@@ -74,13 +90,10 @@ public class FXMLManagerController implements Initializable {
     @FXML
     private TableColumn<Produkty, Integer> colIlosc;
     @FXML
-    private TableColumn<Produkty, Integer> colPlacowka;
-    @FXML
-    private TableColumn<Produkty, String> colLogin;
-    @FXML
     private JFXTextField txOpis,txSzukaj;
     @FXML
     private JFXTextField txNazwa;
+    private ObservableList<Pracownik> data;
     @FXML
     private JFXTextField txIlosc;
     @FXML
@@ -90,7 +103,7 @@ public class FXMLManagerController implements Initializable {
     @FXML
     private JFXTextField txLogin;
     @FXML
-    private JFXListView<Klient> lvKlienci;
+    private JFXListView<Pracownik> lvKlienci;
     @FXML
     private MenuItem cmEdytuj;
     @FXML
@@ -115,37 +128,43 @@ public class FXMLManagerController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-         Connection conn = DBConnection.Connect();
-        
-        
-        try {
-            Statement ps = conn.createStatement();
-            ResultSet rs = ps.executeQuery("SELECT id_klienta, imie_klienta, nazwisko_klienta, kod_pocztowy_klienta, "
-                    + "miejscowosc_klienta, adres_klienta, telefon_klienta "
-                    + "FROM klient;");
-            
-            
-            while (rs.next()){
-                lvKlienci.getItems().add(new Klient(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
-            }
-            
-            ps.close();
-            rs.close();
-            conn.close();
-            
-            } catch (SQLException ex) {
-                Logger.getLogger(FXMLKlientController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
+        LoadDataPracownik();
+
         LoadDataProdukty();
-        //LoadDataWiadomosci();
+    
         dane_combw = new Ladowanie_danych();
 
 
     }
 
+        public void LoadDataPracownik() {
+        Connection conn = DBConnection.Connect();
+        try {
+            Statement ps = conn.createStatement();
+            data = FXCollections.observableArrayList();
+            ResultSet rs = ps.executeQuery("SELECT id_pracownika,imie_pracownika,nazwisko_pracownika,telefon_pracownika,login,haslo,rola,adres_placowki FROM pracownik,placowka where pracownik.id_placowki = placowka.id_placowki  and imie_pracownika != 'Administrator';");
+            while (rs.next()) {
+                data.add(new Pracownik(rs.getInt("id_pracownika"), rs.getString("imie_pracownika"), rs.getString("nazwisko_pracownika"), rs.getString("telefon_pracownika"), rs.getString("login"), rs.getString("haslo"), rs.getString("rola")));
+            }
+            colImie.setCellValueFactory(new PropertyValueFactory<>("imie_pracownika"));
+            colNazwisko.setCellValueFactory(new PropertyValueFactory<>("nazwisko_pracownika"));
+            colRola.setCellValueFactory(new PropertyValueFactory<>("rola"));
+            colNrTel.setCellValueFactory(new PropertyValueFactory<>("telefon_pracownika"));
+            //colPlacowka.setCellValueFactory(new PropertyValueFactory<>("adres_placowki"));
+            colLogin.setCellValueFactory(new PropertyValueFactory<>("login"));
+
+            tableKonta.setItems(null);
+            tableKonta.setItems(data);
+
+            conn.close();
+            ps.close();
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLManagerController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
     @FXML
     private void HandleButton (ActionEvent event){
         if(event.getSource() == btn_Dodaj){
@@ -228,6 +247,18 @@ public class FXMLManagerController implements Initializable {
 
     @FXML
     private void DodajKonto(ActionEvent event) {
+          if (txNazwa.getText().isEmpty() || txCena.getText().isEmpty() || txOpis.getText().isEmpty() || txIlosc.getText().isEmpty()) {
+            MakeAlert.showErrorMessage("Błąd z dodawaniem", "Uzupełnij wszystkie pola produktu.");  
+        } 
+        else if (Sprawdzanie.czyLiczby(txCena.getText()) == false){
+            MakeAlert.showErrorMessage("Błąd z dodawaniem", "Cena musi być liczbą wiekszą od 0.");    
+        }
+        else if (Sprawdzanie.czyLiczby(txIlosc.getText()) == false){
+            MakeAlert.showErrorMessage("Błąd z dodawaniem", "Ilość produktu musi być większa od 0.");    
+        }
+        else {
+            
+        }
             try {
                 Connection conn = DBConnection.Connect();
                 Statement ps = conn.createStatement();
@@ -254,12 +285,23 @@ public class FXMLManagerController implements Initializable {
 
     @FXML
     private void AktualizujKonto(ActionEvent event) {
+            if (tableProdukty.getSelectionModel().getSelectedItem() == null) {
+            MakeAlert.showErrorMessage("Błąd z aktualizacją", "Wybierz produkt do aktualizacji.");
+        } else if (txNazwa.getText().isEmpty() || txCena.getText().isEmpty() || txOpis.getText().isEmpty() || txIlosc.getText().isEmpty()) {
+            MakeAlert.showErrorMessage("Błąd z aktualizacją", "Uzupełnij pola produktu do aktualizacji.");  
+        } 
+        else if (Sprawdzanie.czyLiczby(txIlosc.getText()) == false){
+            MakeAlert.showErrorMessage("Błąd z aktualizacją", "Ilość produktu musi być większa od 0.");    
+        }
+        else if (Sprawdzanie.czyLiczby(txCena.getText()) == false){
+            MakeAlert.showErrorMessage("Błąd z aktualizacją", "Cena musi być w liczbą w zakresie od 1 do nieskończonosci.");    
+        }
+        else {
 
             try {
                 Connection conn = DBConnection.Connect();
                 Statement ps2 = conn.createStatement();
-//                ResultSet rs = ps2.executeQuery("SELECT id_placowki from placowka where adres_placowki = '" + cbPlacowka.getValue() + "'");
-               // rs.next();
+//               
                 String query = "Update Produkty set nazwa_produktu = ?, cena_produktu = ?,  opis_produktu = ?,ilosc = ? where id_produktu = '" + tableProdukty.getSelectionModel().getSelectedItem().getId_produktu() + "'";
                 PreparedStatement ps = conn.prepareStatement(query);
                 ps.setString(1, txNazwa.getText());
@@ -274,7 +316,7 @@ public class FXMLManagerController implements Initializable {
             } catch (SQLException ex) {
 
                 System.out.println("error" + ex);
-
+            }
             }
         }
 

@@ -41,7 +41,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import pharmacy.alert.AlertMaker;
+import pharmacy.alert.MakeAlert;
 import pharmacy.connection.DBConnection;
 import pharmacy.pracownik.FXMLPracownikController;
 import pharmacy.pracownik.modele.Produkt;

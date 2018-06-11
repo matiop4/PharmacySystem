@@ -33,7 +33,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import pharmacy.FXMLLogowanieController;
 import pharmacy.admin.modele.Pracownik;
-import pharmacy.alert.AlertMaker;
+import pharmacy.alert.MakeAlert;
 import pharmacy.connection.DBConnection;
 import static pharmacy.FXMLLogowanieController.id_pracownika;
 import pharmacy.manager.pracownicy.PracownicyClassa;

@@ -34,7 +34,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import pharmacy.alert.AlertMaker;
+import pharmacy.alert.MakeAlert;
 import pharmacy.connection.DBConnection;
 import pharmacy.pracownik.FXMLPracownikController;
 import pharmacy.pracownik.modele.Produkt;
@@ -176,7 +176,7 @@ public class FXMLListaLekowController implements Initializable {
             stage.close();
         } else {
             JFXButton bOkay = new JFXButton("Ok");
-            AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bOkay), "Wystąpił błąd!", "Próba dodania do rachunku nie powiodła się. \nSprawdź czy żądana ilość jest na stanie.");
+            MakeAlert.showMaterialDialog(spMain, apMain, Arrays.asList(bOkay), "Wystąpił błąd!", "Próba dodania do rachunku nie powiodła się. \nSprawdź czy żądana ilość jest na stanie.");
         }
     }
 

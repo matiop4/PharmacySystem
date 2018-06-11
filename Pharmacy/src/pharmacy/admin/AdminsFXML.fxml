@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
@@ -24,7 +25,10 @@
          <children>
             <AnchorPane id="AnchorPane" layoutX="359.0" layoutY="-1.0" prefHeight="650.0" prefWidth="922.0" AnchorPane.topAnchor="-1.0">
                <children>
-                  <Pane fx:id="pnl_two" prefHeight="650.0" prefWidth="921.0" style="-fx-background-color: #ffff;" />
+                  <Pane fx:id="pnl_two" prefHeight="650.0" prefWidth="921.0" style="-fx-background-color: #ffff;">
+                     <children>
+                        <JFXListView fx:id="LIstView_Pracownicy" layoutX="145.0" layoutY="96.0" prefHeight="458.0" prefWidth="631.0" />
+                     </children></Pane>
                   <Pane fx:id="pnl_one" prefHeight="650.0" prefWidth="921.0" style="-fx-background-color: #ffff;">
                      <children>
                         <AnchorPane fx:id="AnchorKonta" minHeight="0.0" minWidth="0.0" prefHeight="650.0" prefWidth="921.0" style="-fx-background-color: #fff;">
@@ -117,7 +121,7 @@
                         </AnchorPane>
                      </children>
                   </Pane>
-                  <Pane fx:id="pnl_clear" prefHeight="650.0" prefWidth="921.0" style="-fx-background-color: #ffff;" visible="false">
+                  <Pane fx:id="pnl_clear" prefHeight="650.0" prefWidth="921.0" style="-fx-background-color: #ffff;">
                      <children>
                         <AnchorPane fx:id="AnchorZamowienia1" minHeight="0.0" minWidth="0.0" prefHeight="650.0" prefWidth="922.0" style="-fx-background-color: #fff;">
                            <children>
@@ -159,7 +163,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="btnDostawa" graphicTextGap="55.0" layoutY="212.0" lineSpacing="10.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#HandleButton" prefHeight="68.0" prefWidth="359.0" text="DOSTAWA">
+                  <JFXButton fx:id="btnDostawa" graphicTextGap="55.0" layoutY="212.0" lineSpacing="10.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#HandleButton" prefHeight="68.0" prefWidth="359.0" text="ZWOLNIENI PRACOWNICY">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -175,7 +179,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </JFXButton>
-                  <FontAwesomeIconView fill="#3495c6" glyphName="AMBULANCE" layoutX="21.0" layoutY="257.0" size="25" strokeType="OUTSIDE" wrappingWidth="31.0" />
+                  <FontAwesomeIconView fill="#3495c6" glyphName="USER_TIMES" layoutX="21.0" layoutY="257.0" size="25" strokeType="OUTSIDE" wrappingWidth="31.0" />
                   <FontAwesomeIconView fill="#3495c6" glyphName="ADDRESS_CARD" layoutX="21.0" layoutY="186.0" size="25" strokeType="OUTSIDE" wrappingWidth="31.0" />
                   <FontAwesomeIconView fill="#3495c6" glyphName="TIMES_CIRCLE" layoutX="25.0" layoutY="612.0" size="30" strokeType="OUTSIDE" wrappingWidth="22.0" />
                </children>

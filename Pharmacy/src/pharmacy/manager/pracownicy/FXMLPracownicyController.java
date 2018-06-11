@@ -59,7 +59,7 @@ public class FXMLPracownicyController implements Initializable {
         
         try {
             Statement ps = con.createStatement();
-            ResultSet rs = ps.executeQuery("SELECT `id_pracownika`, `imie_pracownika`, `nazwisko_pracownika`, `telefon_pracownika`,  `rola` FROM `pracownik` where rola='Sprzedawca' or rola='Kierownik'");
+            ResultSet rs = ps.executeQuery("SELECT `id_pracownika`, `imie_pracownika`, `nazwisko_pracownika`, `telefon_pracownika`,  `rola` FROM `pracownik` where rola='Sprzedawca' or rola='Menadzer'");
             while (rs.next()) {
                 LIstView_Pracownicy.getItems().add(new PracownicyClassa(rs.getInt(1), rs.getString(2).toString(), rs.getString(3).toString(), rs.getString(4).toString(), rs.getString(5).toString()));
             }

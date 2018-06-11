@@ -55,7 +55,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import pharmacy.pharmacy;
-import pharmacy.alert.AlertMaker;
+import pharmacy.alert.MakeAlert;
 import pharmacy.pracownik.modele.Klient;
 import pharmacy.pracownik.modele.Produkt;
 import java.awt.event.ItemEvent;
@@ -384,7 +384,7 @@ String dateString = dateFormat.format(currentDate);
 
         JFXButton bOkay = new JFXButton("Tak, usuń");
         JFXButton bCancel = new JFXButton("Anuluj");
-        AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bOkay, bCancel), "Potwierdź decyzję", "Usuwamy lek?");
+        MakeAlert.showMaterialDialog(spMain, apMain, Arrays.asList(bOkay, bCancel), "Potwierdź decyzję", "Usuwamy lek?");
         bOkay.setOnAction((ActionEvent event1) -> {
             try {
                 //zrobic usuniecie, ak problem to wywali błąd
@@ -392,7 +392,7 @@ String dateString = dateFormat.format(currentDate);
                 tableRachunek.getItems().remove(tableRachunek.getSelectionModel().getSelectedIndex());
                 UstawRabaty();
             } catch (Exception exp) {
-                AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bCancel), "Błąd", "Zaznacz jakąś pozycję do usunięcia");
+                MakeAlert.showMaterialDialog(spMain, apMain, Arrays.asList(bCancel), "Błąd", "Zaznacz jakąś pozycję do usunięcia");
             }
         });
         }
@@ -507,7 +507,7 @@ String dateString = dateFormat.format(currentDate);
 
         JFXButton bOkay = new JFXButton("Tak");
         JFXButton bCancel = new JFXButton("Nie");
-        AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bOkay, bCancel), "Potwierdzenie transakcji", "Zatwierdzamy kupno leków?");
+        MakeAlert.showMaterialDialog(spMain, apMain, Arrays.asList(bOkay, bCancel), "Potwierdzenie transakcji", "Zatwierdzamy kupno leków?");
         bOkay.setOnAction((ActionEvent event1) -> {
             
             
@@ -526,7 +526,7 @@ String dateString = dateFormat.format(currentDate);
             });
         } else {
             JFXButton bCancel1 = new JFXButton("Ok");
-            AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bCancel1), "Błąd", "By móc wygenerować rachunek potrzebujemy dodac jakieś leki.");
+            MakeAlert.showMaterialDialog(spMain, apMain, Arrays.asList(bCancel1), "Błąd", "By móc wygenerować rachunek potrzebujemy dodac jakieś leki.");
    
         }
     }
