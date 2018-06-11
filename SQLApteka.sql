@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas generowania: 11 Cze 2018, 05:05
+-- Czas generowania: 11 Cze 2018, 05:49
 -- Wersja serwera: 10.1.13-MariaDB
 -- Wersja PHP: 5.6.21
 
@@ -93,11 +93,11 @@ CREATE TABLE `pracownik` (
 --
 
 INSERT INTO `pracownik` (`id_pracownika`, `imie_pracownika`, `nazwisko_pracownika`, `telefon_pracownika`, `login`, `haslo`, `rola`, `id_placowki`, `status`) VALUES
-(2, 'Krzysztof', 'Krzysiek', 733589985, 'michal', 'krzysztof', 'sprzedawca', 1, 'aktywny'),
-(3, 'Andrzej', 'Husarz', 124569789, 'lukas', 'has', 'sprzedawca', 1, 'aktywny'),
+(2, 'Krzysztof', 'Krzysiek', 733589985, 'michal', 'krzysztof', 'sprzedawca', 1, 'nieaktywne'),
+(3, 'Andrzej', 'Husarz', 124569789, 'lukas', 'has', 'sprzedawca', 1, 'nieaktywne'),
 (4, 'Karolina', 'Kielbasa', 789456125, 'karolina', 'kielba', 'sprzedawca', 1, 'aktywny'),
 (5, 'Mateusz', 'Holdas', 147852365, 'mateusz', 'holda', 'Menager', 2, 'aktywny'),
-(6, 'Tomasz', 'Papek', 123456789, 'tomasz', 'popiela', 'Menager', 4, 'aktywny'),
+(6, 'Tomasz', 'Papek', 123456789, 'tomasz', 'popiela', 'Menager', 4, 'nieaktywne'),
 (7, 'Artur', 'Polak', 741258963, 'artur', 'kawas', 'sprzedawca', 4, 'aktywny'),
 (8, 'Administrator', 'Administrator', 999999999, 'admin', '123', 'admin', 2, 'aktywny'),
 (9, 'Mateusz', 'Dworak', 733111222, 'mateusz', 'dworak', 'sprzedawca', 1, 'aktywny'),

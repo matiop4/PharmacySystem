@@ -77,13 +77,27 @@ public class AdminFXMLController implements Initializable {
     @FXML
     private TableColumn<Pracownik, String> colLogin;
     @FXML
+    private TableView<Pracownik> tableKonta1;
+    @FXML
+    private TableColumn<Pracownik, String> colImie1;
+    @FXML
+    private TableColumn<Pracownik, String> colNazwisko1;
+    @FXML
+    private TableColumn<Pracownik, Integer> colRola1;
+    @FXML
+    private TableColumn<Pracownik, Integer> colNrTel1;
+    @FXML
+    private TableColumn<Pracownik, Integer> colPlacowka1;
+    @FXML
+    private TableColumn<Pracownik, String> colLogin1;
+    @FXML
     private GridPane GridDane;
     @FXML
     private JFXTextField txSzukaj;
     @FXML
     private JFXButton btnDodajKonto;
     @FXML
-    private JFXButton btnWyczyscKonta;
+    private JFXButton btnWyczyscKonta,btnZwolnij;
     @FXML
     private JFXButton btnAktualizujKonto;
     @FXML
@@ -117,6 +131,7 @@ public class AdminFXMLController implements Initializable {
     @FXML
     private JFXComboBox<String> cbRola;
     private ObservableList<Pracownik> data;
+    private ObservableList<Pracownik> data1;
     @FXML
     private JFXButton btnHasloAdmina;
     Ladowanie_danych dane_combo;
@@ -170,6 +185,7 @@ public class AdminFXMLController implements Initializable {
                 "sprzedawca",
                 "Menager"
         );
+        LoadDataZwolnij();
         LoadDataPracownik();
         //LoadDataWiadomosci();
         dane_combo = new Ladowanie_danych();
@@ -199,7 +215,7 @@ public class AdminFXMLController implements Initializable {
         try {
             Statement ps = conn.createStatement();
             data = FXCollections.observableArrayList();
-            ResultSet rs = ps.executeQuery("SELECT id_pracownika,imie_pracownika,nazwisko_pracownika,telefon_pracownika,login,haslo,rola,adres_placowki FROM pracownik,placowka where pracownik.id_placowki = placowka.id_placowki  and imie_pracownika != 'Administrator';");
+            ResultSet rs = ps.executeQuery("SELECT id_pracownika,imie_pracownika,nazwisko_pracownika,telefon_pracownika,login,haslo,rola,adres_placowki,status FROM pracownik,placowka where pracownik.id_placowki = placowka.id_placowki and imie_pracownika != 'Administrator' and status ='aktywny';");
             while (rs.next()) {
                 data.add(new Pracownik(rs.getInt("id_pracownika"), rs.getString("imie_pracownika"), rs.getString("nazwisko_pracownika"), rs.getString("telefon_pracownika"), rs.getString("login"), rs.getString("haslo"), rs.getString("rola")));
             }
@@ -233,6 +249,34 @@ public class AdminFXMLController implements Initializable {
         }
 
     }
+    
+    public void LoadDataZwolnij() {
+        Connection conn = DBConnection.Connect();
+        try {
+            Statement ps = conn.createStatement();
+            data1 = FXCollections.observableArrayList();
+            ResultSet rs = ps.executeQuery("SELECT id_pracownika,imie_pracownika,nazwisko_pracownika,telefon_pracownika,login,haslo,rola,adres_placowki,status FROM pracownik,placowka where pracownik.id_placowki = placowka.id_placowki and imie_pracownika != 'Administrator' and status ='nieaktywne';");
+            while (rs.next()) {
+                data1.add(new Pracownik(rs.getInt("id_pracownika"), rs.getString("imie_pracownika"), rs.getString("nazwisko_pracownika"), rs.getString("telefon_pracownika"), rs.getString("login"), rs.getString("haslo"), rs.getString("rola")));
+            }
+            colImie1.setCellValueFactory(new PropertyValueFactory<>("imie_pracownika"));
+            colNazwisko1.setCellValueFactory(new PropertyValueFactory<>("nazwisko_pracownika"));
+            colRola1.setCellValueFactory(new PropertyValueFactory<>("rola"));
+            colNrTel1.setCellValueFactory(new PropertyValueFactory<>("telefon_pracownika"));
+            //colPlacowka.setCellValueFactory(new PropertyValueFactory<>("adres_placowki"));
+            colLogin1.setCellValueFactory(new PropertyValueFactory<>("login"));
+
+            tableKonta1.setItems(null);
+            tableKonta1.setItems(data1);
+ 
+            conn.close();
+            ps.close();
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 
    
 
@@ -253,7 +297,7 @@ public class AdminFXMLController implements Initializable {
                 Statement ps = conn.createStatement();
                 //ResultSet rs = ps.executeQuery("SELECT id_placowki from placowka where adres_placowki = '" + cbPlacowka.getValue() + "'");
                 //rs.next();
-                conn.createStatement().executeUpdate("INSERT INTO pracownik(id_pracownika, imie_pracownika, nazwisko_pracownika, telefon_pracownika,login,haslo,rola,id_placowki,status) Values (null,'" + txImie.getText() + "','" + txNazwisko.getText() + "','" + txNumerTel.getText() + "','" + txLogin.getText() + "','" + txHaslo.getText() + "','" + cbRola.getValue() + "','" + 1 + "','" + "aktywne')");
+                conn.createStatement().executeUpdate("INSERT INTO pracownik(id_pracownika, imie_pracownika, nazwisko_pracownika, telefon_pracownika,login,haslo,rola,id_placowki,status) Values (null,'" + txImie.getText() + "','" + txNazwisko.getText() + "','" + txNumerTel.getText() + "','" + txLogin.getText() + "','" + txHaslo.getText() + "','" + cbRola.getValue() + "','" + 1 + "','" + "aktywny')");
                 LoadDataPracownik();
                 conn.close();
             } catch (SQLException e) {
@@ -308,6 +352,30 @@ public class AdminFXMLController implements Initializable {
             }
         }
     }
+    
+    
+    @FXML
+    private void Zwolnij(ActionEvent event) {
+
+      
+            try {
+                Connection conn = DBConnection.Connect();
+                Statement ps2 = conn.createStatement();
+//                ResultSet rs = ps2.executeQuery("SELECT id_placowki from placowka where adres_placowki = '" + cbPlacowka.getValue() + "'");
+               // rs.next();
+                String query = "Update Pracownik set status = 'nieaktywne' where id_pracownika = '" + tableKonta.getSelectionModel().getSelectedItem().getId_pracownika() + "'";
+                PreparedStatement ps = conn.prepareStatement(query);
+                ps.execute();
+                ps.close();
+                LoadDataPracownik();
+            } catch (SQLException ex) {
+
+                System.out.println("error" + ex);
+
+            }
+            LoadDataZwolnij();
+  }
+
 
  
     

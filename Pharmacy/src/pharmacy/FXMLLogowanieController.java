@@ -90,7 +90,7 @@ public class FXMLLogowanieController implements Initializable {
             
             
             if (!rola.equals("admin")){
-                rs = ps.executeQuery("SELECT id_pracownika,id_placowki,login,haslo,rola FROM pracownik WHERE login='"+tfLogin.getText()+"' AND haslo='"+tfHaslo.getText()+"';");
+                rs = ps.executeQuery("SELECT id_pracownika,id_placowki,login,haslo,rola,status FROM pracownik WHERE login='"+tfLogin.getText()+"' AND haslo='"+tfHaslo.getText()+"'"+" and status ='aktywny';");
                 if(rs.isBeforeFirst()){
                     rs.next();
                     System.out.println(rs.getString("rola"));

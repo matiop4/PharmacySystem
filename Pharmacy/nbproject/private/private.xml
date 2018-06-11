@@ -17,6 +17,7 @@
             <file>file:/C:/Users/Lucjano/Desktop/projekt/Pharmacy/src/pharmacy/manager/FXMLManager.fxml</file>
             <file>file:/C:/Users/Lucjano/Desktop/projekt/Pharmacy/src/pharmacy/manager/pracownicy/FXMLPracownicyController.java</file>
             <file>file:/C:/Users/Lucjano/Desktop/projekt/Pharmacy/src/pharmacy/pracownik/zakupy/FXMLZakupy.fxml</file>
+            <file>file:/C:/Users/Lucjano/Desktop/projekt/Pharmacy/src/pharmacy/sprawdzanie/Sprawdzanie.java</file>
             <file>file:/C:/Users/Lucjano/Desktop/projekt/Pharmacy/src/pharmacy/manager/pracownicy/PracownicyClassa.java</file>
             <file>file:/C:/Users/Lucjano/Desktop/projekt/Pharmacy/src/pharmacy/alert/MakeAlert.java</file>
             <file>file:/C:/Users/Lucjano/Desktop/projekt/Pharmacy/src/pharmacy/manager/placowki/FXMLPlacowki.fxml</file>
@@ -27,16 +28,13 @@
             <file>file:/C:/Users/Lucjano/Desktop/projekt/Pharmacy/src/pharmacy/admin/modele/Produkty.java</file>
             <file>file:/C:/Users/Lucjano/Desktop/projekt/Pharmacy/src/pharmacy/manager/klasy/Ladowanie_danych.java</file>
             <file>file:/C:/Users/Lucjano/Desktop/projekt/Pharmacy/src/pharmacy/pracownik/klient/FXMLKlientController.java</file>
-            <file>file:/C:/Users/Lucjano/Desktop/projekt/Pharmacy/src/pharmacy/manager/pracownicy/FXMLSzczegolyController.java</file>
             <file>file:/C:/Users/Lucjano/Desktop/projekt/Pharmacy/src/pharmacy/FXMLLogowanieController.java</file>
-            <file>file:/C:/Users/Lucjano/Desktop/projekt/Pharmacy/src/pharmacy/pracownik/produkty/FXMLDodajNowyProduktController.java</file>
             <file>file:/C:/Users/Lucjano/Desktop/projekt/Pharmacy/src/pharmacy/manager/FXMLManagerController.java</file>
             <file>file:/C:/Users/Lucjano/Desktop/projekt/Pharmacy/src/pharmacy/pracownik/zakupy/FXMLListaLekow.fxml</file>
             <file>file:/C:/Users/Lucjano/Desktop/projekt/Pharmacy/src/pharmacy/pracownik/FXMLPracownik.fxml</file>
             <file>file:/C:/Users/Lucjano/Desktop/projekt/Pharmacy/src/pharmacy/admin/modele/Pracownik.java</file>
             <file>file:/C:/Users/Lucjano/Desktop/projekt/Pharmacy/src/pharmacy/manager/placowki/FXMLSzczegoly.fxml</file>
             <file>file:/C:/Users/Lucjano/Desktop/projekt/Pharmacy/src/pharmacy/manager/klasy/Alert.java</file>
-            <file>file:/C:/Users/Lucjano/Desktop/projekt/Pharmacy/src/pharmacy/pracownik/produkty/FXMLDodajNowyProdukt.fxml</file>
         </group>
     </open-files>
 </project-private>
