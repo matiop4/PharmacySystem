@@ -40,6 +40,10 @@ public class Sprawdzanie {
     public static Boolean czyLiczby(String text) {
         return text.matches("\\d+");
     }
+    public static Boolean czyFloat(String text) {
+        return text.matches("[0-9]+.[0-9]+");
+    }
+
 
     public static Boolean czyLitery(String text) {
         return text.matches("[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]+.*[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]");

@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Pharmacy/dist/lib/fontawesomefx-commons-8.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Pharmacy/dist/lib/fontawesomefx-fontawesome-4.7.0-5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Pharmacy/dist/lib/ojdbc7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Pharmacy/dist/lib/mysql-connector-java-5.1.46.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Pharmacy/dist/lib/itextpdf-5.4.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Pharmacy/dist/lib/jfoenix-8.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

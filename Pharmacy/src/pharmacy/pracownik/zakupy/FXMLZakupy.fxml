@@ -79,7 +79,7 @@
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <JFXCheckBox fx:id="cSrody" checkedColor="#53abbf" layoutX="409.0" layoutY="130.0" onAction="#zaznaczony" onMouseClicked="#zaznaczonyPrzedmiot" prefHeight="45.0" prefWidth="371.0" text="TANIE ŚRODY (-10%)" textFill="#941919" unCheckedColor="#757575">
+            <JFXCheckBox fx:id="cSrody" checkedColor="#53abbf" layoutX="409.0" layoutY="130.0" onAction="#zaznaczony1" prefHeight="45.0" prefWidth="371.0" text="TANIE ŚRODY (-10%)" textFill="#941919" unCheckedColor="#757575">
                <font>
                   <Font name="Century Gothic Bold" size="30.0" />
                </font>

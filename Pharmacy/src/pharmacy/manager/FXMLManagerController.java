@@ -250,11 +250,11 @@ public class FXMLManagerController implements Initializable {
           if (txNazwa.getText().isEmpty() || txCena.getText().isEmpty() || txOpis.getText().isEmpty() || txIlosc.getText().isEmpty()) {
             MakeAlert.showErrorMessage("Błąd z dodawaniem", "Uzupełnij wszystkie pola produktu.");  
         } 
-        else if (Sprawdzanie.czyLiczby(txCena.getText()) == false){
-            MakeAlert.showErrorMessage("Błąd z dodawaniem", "Cena musi być liczbą wiekszą od 0.");    
+        else if (Sprawdzanie.czyFloat(txCena.getText()) == false){
+            MakeAlert.showErrorMessage("Błąd z dodawaniem", "Cena nie może byc mniejsza od zera lub być liczbą całkowitą. Przykładowa cena: 7.5");
         }
         else if (Sprawdzanie.czyLiczby(txIlosc.getText()) == false){
-            MakeAlert.showErrorMessage("Błąd z dodawaniem", "Ilość produktu musi być większa od 0.");    
+            MakeAlert.showErrorMessage("Błąd z dodawaniem", "Ilość produktu musi być liczbą i nie może być mniejsza od 0.");
         }
         else {
             
@@ -291,10 +291,10 @@ public class FXMLManagerController implements Initializable {
             MakeAlert.showErrorMessage("Błąd z aktualizacją", "Uzupełnij pola produktu do aktualizacji.");  
         } 
         else if (Sprawdzanie.czyLiczby(txIlosc.getText()) == false){
-            MakeAlert.showErrorMessage("Błąd z aktualizacją", "Ilość produktu musi być większa od 0.");    
+            MakeAlert.showErrorMessage("Błąd z aktualizacją", "Ilość produktu musi być liczbą i nie może być mniejsza od 0.");
         }
-        else if (Sprawdzanie.czyLiczby(txCena.getText()) == false){
-            MakeAlert.showErrorMessage("Błąd z aktualizacją", "Cena musi być w liczbą w zakresie od 1 do nieskończonosci.");    
+        else if (Sprawdzanie.czyFloat(txCena.getText()) == false){
+            MakeAlert.showErrorMessage("Błąd z aktualizacją", "Cena nie może byc mniejsza od zera lub być liczbą całkowitą. Przykładowa cena: 7.5.");
         }
         else {
 

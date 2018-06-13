@@ -119,10 +119,10 @@ public class FXMLZakupyController implements Initializable {
            PdfWriter.getInstance(document, file);
  
  //Inserting Image in PDF
-     Image image = Image.getInstance ("src/pharmacy/pracownik/logo.jpg");
+     Image image = Image.getInstance ("Pharmacy/src/pharmacy/pracownik/logo.jpg");
      image.scaleAbsolute(250f, 150f);//image width,height 
      
-     Image podpisy = Image.getInstance ("src/pharmacy/pracownik/podpisy.png");
+     Image podpisy = Image.getInstance ("Pharmacy/src/pharmacy/pracownik/podpisy.png");
      podpisy.scaleAbsolute(190f, 110f);//image width,height 
      
  //Inserting Table in PDF
@@ -400,24 +400,16 @@ String dateString = dateFormat.format(currentDate);
 
     @FXML
     private void zaznaczonyRenta(ActionEvent event) {
-        double Sroda = (getCena() *(0.9));
-        double Poniedzialek = (getCena() *(0.85));
 
         double Renta = (getCena() *(0.7));
         
         String wartos = String.valueOf(getCena()+" zł");
-        
-        double nowyPoniedzialek = Math.round(Poniedzialek);
-        String cenaPoniedzialek = String.valueOf(nowyPoniedzialek);
-        
+
         Renta = Renta * 100;
         double nowaRenta = Math.round(Renta);
         nowaRenta = nowaRenta / 100;
         String cenaRenta = String.valueOf(nowaRenta);
-        
-        double nowaSroda = Math.round(Sroda);
-        String cenaSroda = String.valueOf(nowaSroda);
-        
+
         if (cRencista.isSelected()){
             lSumaWartosc.setText(cenaRenta + " zł");
                 cPoniedzialki.setDisable(true);
@@ -439,23 +431,20 @@ String dateString = dateFormat.format(currentDate);
                 cRencista.setDisable(false);
     }
     @FXML
-    private void zaznaczony(ActionEvent event) {
+    private void zaznaczony1(ActionEvent event) {
         double Sroda = (getCena() *(0.9));
-        double Poniedzialek = (getCena() *(0.85));
 
-        double Renta = (getCena() *(0.7));
-        
         String wartos = String.valueOf(getCena()+" zł");
-        
-        double nowyPoniedzialek = Math.round(Poniedzialek);
-        String cenaPoniedzialek = String.valueOf(nowyPoniedzialek);
-        
-        double nowaRenta = Math.round(Renta);
-        String cenaRenta = String.valueOf(nowaRenta);
-        
+
+        Sroda *= 100;
         double nowaSroda = Math.round(Sroda);
+        nowaSroda /= 100;
+
+
         String cenaSroda = String.valueOf(nowaSroda);
-        
+
+
+
         if (cSrody.isSelected()){
             lSumaWartosc.setText(cenaSroda + " zł");
                 cPoniedzialki.setDisable(true);
@@ -463,28 +452,23 @@ String dateString = dateFormat.format(currentDate);
             else { lSumaWartosc.setText(wartos);
                     cPoniedzialki.setDisable(false);
                     cRencista.setDisable(false);
-                  
+
         }
         
     }
     
     @FXML
     private void zaznaczonyPrzedmiot(ActionEvent event) {
-        double Sroda = (getCena() *(0.9));
+
         double Poniedzialek = (getCena() *(0.85));
 
-        double Renta = (getCena() *(0.7));
-        
         String wartos = String.valueOf(getCena()+" zł");
-        
+
+        Poniedzialek *= 100;
         double nowyPoniedzialek = Math.round(Poniedzialek);
+        nowyPoniedzialek /= 100;
         String cenaPoniedzialek = String.valueOf(nowyPoniedzialek);
-        
-        double nowaRenta = Math.round(Renta);
-        String cenaRenta = String.valueOf(nowaRenta);
-        
-        double nowaSroda = Math.round(Sroda);
-        String cenaSroda = String.valueOf(nowaSroda);
+
         
         if (cPoniedzialki.isSelected()){
             cSrody.setDisable(true);
